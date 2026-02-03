@@ -1,15 +1,15 @@
-a = input()
+s = input()
 stack = []
-ans = 0
+count = 0
 
-for i, ch in enumerate(a) :
-    if ch == ')' :
-        stack.pop() 
-        if a[i - 1] == '(' :
-            ans += len(stack) 
+for i in range(len(s)) :
+    if s[i] == ')' :
+        stack.pop()
+        if s[i-1] == '(' :
+            count += len(stack)
         else :
-            ans += 1
-
+            count += 1
     else :
-        stack.append('(') 
-print(ans)
+        stack.append(s[i])
+
+print(count)
