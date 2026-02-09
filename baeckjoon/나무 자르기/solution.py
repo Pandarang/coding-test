@@ -1,3 +1,6 @@
+import sys
+input = sys.stdin.readline
+
 n, m = map(int, input().split())
 trees = list(map(int, input().split()))
 
@@ -17,6 +20,5 @@ while left <= right :
         left = mid + 1
     else :
         right = mid - 1
-    
-print(answer)
 
+print(answer)
