@@ -1,21 +1,19 @@
-a = int(input())
+n = int(input())
+arr = [int(input()) for _ in range(n)]
 
-for _ in range(a) :
-    n = int(input())
-
+for x in arr :
     fib = [1, 2]
-    while fib[-1] <= n :
+    while fib[-1] <= x :
         fib.append(fib[-1] + fib[-2])
 
-    remain = n
     ans = []
-
     for f in reversed(fib) :
-        if f <= remain :
+        
+        if f <= x :
             ans.append(f)
-            remain -= f
-        if remain == 0 :
+            x -= f
+        if x == 0 :
             break
-
-    print(*sorted(ans))
-
+    
+    ans.sort()
+    print(*ans)
