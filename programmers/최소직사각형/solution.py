@@ -1,23 +1,14 @@
-def solution(sizes):
+def solution(sizes) :
     answer = 0
     
-    n = len(sizes)
-    arr = []
-    rows = 0
-    cols = 0
+    weight, height = 0, 0
+    n, m = 0, 0
     
-    for r, c in sizes :
-        if r >= c :
-            arr.append([r, c])
-        else :
-            arr.append([c, r])
-            
-    for r, c in arr :
-        if r > rows :
-            rows = r
-        if c > cols :
-            cols = c
-        
-    answer = rows * cols
+    for w, h in sizes :
+        weight = max(max(w, h), n)
+        height = max(min(w, h), m)
+
+        n = weight
+        m = height
     
-    return answer
+    return weight * height
