@@ -10,7 +10,7 @@ r = len(arr) - 1
 max_num = float('inf')
 ans_l, ans_r = arr[l], arr[r]
 
-while l <= r :
+while l < r :
     s = arr[l] + arr[r]
     abs_s = abs(s)
 
