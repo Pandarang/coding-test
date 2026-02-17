@@ -4,10 +4,10 @@ def solution(m, musicinfos):
     m_arr = [s.split(",") for s in musicinfos]
     def conv(x):
         return (x.replace("C#", "c")
-                 .replace("D#", "d")
-                 .replace("F#", "f")
-                 .replace("G#", "g")
-                 .replace("A#", "a"))
+                .replace("D#", "d")
+                .replace("F#", "f")
+                .replace("G#", "g")
+                .replace("A#", "a"))
     
     best = -1
     m = conv(m)
