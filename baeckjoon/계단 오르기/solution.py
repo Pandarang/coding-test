@@ -17,4 +17,4 @@ for i in range(3, n + 1) :
         dp[i-2] + arr[i], 
         dp[i-3] + arr[i-1] + arr[i]
     )
-print(dp)
+print(dp[-1])
