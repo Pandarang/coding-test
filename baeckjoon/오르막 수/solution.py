@@ -1,14 +1,14 @@
 n = int(input())
-
 MOD = 10007
 
-dp = [[0] * 10 for _ in range(n)]
+dp = [1] * 10
 
-for d in range(10) :
-    dp[0][d] = 1
+for _ in range(2, n + 1) :
+    for j in range(1, 10) :
+        dp[j] += (dp[j] - dp[j-1]) / MOD 
+print(dp)
 
-for i in range(1, n) :
-    for j in range(10) :
-        dp[i][j] = sum(dp[i-1][:j+1]) % MOD
-
-print(sum(dp[n-1]) % MOD)
+# dp[1] 0123456789
+n = 2
+# 1 123456789
+# 2 23456789 
