@@ -1,9 +1,22 @@
-from itertools import permutations
-
 n, m = map(int, input().split())
 
-arr = [i for i in range(1, n + 1)]
+visited = [False] * (n + 1)
+path = []
 
-for i in permutations(arr, m) :
-    print(*i)
+def dfs(depth) :
+    if depth == m :
+        print(*path)
+        return 
+    
+    for x in range(1, n + 1) :
+        if not visited[x] :
+            visited[x] = True
+            path.append(x)
+            
+            dfs(depth + 1)
 
+            path.pop()
+            visited[x] = False
+
+dfs(0)
+            
