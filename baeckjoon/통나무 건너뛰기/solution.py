@@ -1,26 +1,26 @@
+import sys
 from collections import deque
 
-n = int(input())
-arr = []
+input = sys.stdin.readline
 
 
-for _ in range(n) :
-    ans = deque()
-    minN = 0
-    int(input())
+T = int(input())
+
+for _ in range(T) :
+    n = int(input())
     arr = list(map(int, input().split()))
-    
     arr.sort()
+    q = deque()
+    q.append(arr.pop())
+    
+    while arr :
+        q.append(arr.pop())
+        if arr :
+            q.appendleft(arr.pop())
+            
+    max_num = 0
+    for i in range(1, n) :
+        max_num = max(abs(q[i] - q[i-1]), max_num)
         
-    for x in range(len(arr)) :
-        if x % 2 == 0 :
-            ans.append(arr[x])
-        else :
-            ans.appendleft(arr[x])
-
-    for x in range(len(ans) - 1) :
-        temp = abs(ans[x] - ans[x+1])
-        if temp > minN :
-            minN = temp
-        
-    print(minN)
+    max_num = max(abs(q[-1] - q[0]), max_num)
+    print(max_num)
