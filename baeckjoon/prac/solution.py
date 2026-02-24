@@ -1,35 +1,25 @@
-from collections import deque
+from itertools import permutations
 
-n, m = map(int, input().split())
+n, m = input().split()
 
-board = [list(map(int, input().split())) for _ in range(n)]
-visited = [[False] * m for _ in range(n)]
+new_n = list(n)
 
-dx = [1, -1, 0, 0, 1, 1, -1, -1]
-dy = [0, 0, 1, -1, 1, -1, 1, -1]
+temp = set()
 
-def bfs(y, x) :
-    q = deque()    
-    q.append((y, x))
-    visited[y][x] = True
+for p in permutations(new_n, len(n)) :
+    if p[0] == '0' :
+        continue
+    temp.add(int(''.join(p)))
 
-    while q :
-        y, x = q.popleft()
+m = int(m)
+answer = 0
+for i in temp :
+    if i > m :
+        continue
+    if i > answer :
+        answer = i
 
-        for i in range(8) :
-            nx = x + dx[i]
-            ny = y + dy[i]
-
-            if 0 <= nx < m and 0 <= ny < n :
-                if not visited[ny][nx] and board[ny][nx] == 1 :
-                    visited[ny][nx] = True
-                    q.append((ny, nx))
-
-cnt = 0
-for y in range(n) :
-    for x in range(m) :
-        if not visited[y][x] and board[y][x] == 1 :
-            bfs(y, x)
-            cnt += 1 
-
-print(cnt)
+if answer == 0 :
+    print(-1)
+else :
+    print(answer)
