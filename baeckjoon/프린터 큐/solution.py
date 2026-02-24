@@ -1,28 +1,25 @@
 from collections import deque
-n = int(input())
-temp = 0
 
-for _ in range(n) :
-    a, b = map(int, input().split())
+t = int(input())
+
+for _ in range(t) :
+    n, m = map(int, input().split())
     arr = list(map(int, input().split()))
-    
-    q = deque([(arr[i], i) for i in range(a)])
+    st = []
+    q = deque()
+    for i, v in enumerate(arr) :
+        q.append((v, i))
+
     cnt = 0
-    
     while q :
-        p, idx = q.popleft()
+        b, a = q.popleft()
         
-        if q :
-            max_arr = max(x[0] for x in q)
-        else :
-            max_arr = 0
+        if q and max(q, key=lambda x: x[0])[0] > b :
+            q.append((b, a))
+            continue
             
-        if p < max_arr :
-            q.append((p, idx))
-        else :
-            cnt += 1
-            if idx == b :
-                print(cnt)
-                break
-            
-        
+        cnt += 1
+        if a == m :
+            print(cnt)
+            break
+    
