@@ -1,8 +1,10 @@
-n, c = map(int, input().split())
+n, m = map(int, input().split())
 arr = [int(input()) for _ in range(n)]
+
 arr.sort()
 
-left, right = 1, max(arr) - min(arr)
+left = 1
+right = arr[-1]
 answer = 0
 
 while left <= right :
@@ -16,7 +18,7 @@ while left <= right :
             cnt += 1
             last = arr[i]
         
-    if cnt >= c :
+    if cnt >= m :
         answer = mid
         left = mid + 1
     else :
