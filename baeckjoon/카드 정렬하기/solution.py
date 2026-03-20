@@ -2,18 +2,14 @@ import heapq
 
 n = int(input())
 heap = [int(input()) for _ in range(n)]
-
-heapq.heapify(heap) 
+heap.sort()
 ans = 0
 
 while len(heap) >= 2 :
-    a = heapq.heappop(heap)
-    b = heapq.heappop(heap)
-    tmp = a + b
+    x = heapq.heappop(heap)
+    y = heapq.heappop(heap)
     
-    heapq.heappush(heap, tmp)
-    ans += tmp
+    ans += x + y
+    heapq.heappush(heap, x+y)
     
 print(ans)
-
-    
