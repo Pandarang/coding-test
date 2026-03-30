@@ -3,17 +3,19 @@ input = sys.stdin.readline
 
 s = input().strip()
 boom = input().strip()
-l = len(boom) 
-last = boom[-1]
 
 stack = []
+length = len(boom)
 
 for ch in s :
     stack.append(ch)
     
-    if ch == last and len(stack) >= l :
-        if ''.join(stack[-l:]) == boom :
-            del stack[-l:]
-                
-ans = ''.join(stack)
-print(ans if ans else "FRULA")
+    if len(stack) >= length and ''.join(stack[-length:]) == boom :
+        del stack[-length:]
+    
+res = ''.join(stack)
+
+if res :
+    print(res)
+else :
+    print("FRULA")
